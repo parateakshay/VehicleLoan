@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,5 +26,9 @@ public class LoginController
 		return loginService.sendCustomerCredentials();
 	}
 	
-	
+	@PostMapping("/loginTrial")
+	public void loginCustomer(@RequestBody String customerEmail,String customerPassword)
+	{
+		loginService.loginCustomer(customerEmail, customerPassword);
+	}
 }

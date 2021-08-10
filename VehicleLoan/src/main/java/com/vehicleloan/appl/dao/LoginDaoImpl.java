@@ -23,8 +23,6 @@ public class LoginDaoImpl implements LoginDao
 		if(customer.getCustomerEmail().equals(customerEmail) && customer.getCustomerPassword().equals(customerPassword))
 		{
 			return true;
-			
-			
 		}
 		else
 		{
@@ -32,10 +30,6 @@ public class LoginDaoImpl implements LoginDao
 			
 		}
 		}
-
-	
-	
-
 	@Transactional
 	public boolean changePassword(String customerEmail, String customerOldPassword, String customerNewPassword) 
 	{
@@ -55,16 +49,12 @@ public class LoginDaoImpl implements LoginDao
 		else
 		{
 			return false;
-			
 		}
-		
-		
 	}
 
-	
 	public List<Customer> sendCustomerCredentials() 
 	{
-		Query query = em.createQuery("select c from Customer c");
+		Query query = em.createQuery("select c.customerEmail,c.customerPassword from Customer c");
 		List<Customer> customerList = query.getResultList();
 		return customerList;
 	}	
