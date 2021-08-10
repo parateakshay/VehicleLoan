@@ -12,13 +12,14 @@ import javax.persistence.Table;
 @Table(name = "CUSTOMER")
 public class Customer 
 {
-	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "HB_STU_SEQ")
-	@SequenceGenerator(name = "HB_STU_SEQ",sequenceName = "Stu_Seq",allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "HB_CUST_SEQ")
+	@SequenceGenerator(name = "HB_CUST_SEQ",sequenceName = "customer_seq",allocationSize=1)
 	@Column(name = "CUSTOMER_ID")
+	@Id
 	private int customerId;
 	@Column(name = "CUSTOMER_NAME")
 	private String customerName;
-	@Id
+	
 	@Column(name = "CUSTOMER_EMAIL")
 	private String customerEmail;
 	

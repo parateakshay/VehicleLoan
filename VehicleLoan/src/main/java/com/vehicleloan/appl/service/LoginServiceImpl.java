@@ -28,55 +28,22 @@ public class LoginServiceImpl implements LoginService
 		this.loginDao = loginDao;
 	}
 
-
-
-	public String loginCustomer(String customerEmail, String customerPassword) 
-	{
-		
-		boolean flag = loginDao.loginCustomer(customerEmail, customerPassword);
-		if(flag)
-		{
-			return "Login successfull";
-			
-		}
-		else
-		{
-			return "login failed";
-			
-		}
-		
-	}
-
-
-
-
-	@Override
-	public String changePassword(String customerEmail, String customerOldPassword, String customerNewPassword) 
-	{
-		boolean flag = loginDao.changePassword(customerEmail, customerOldPassword, customerNewPassword);
-		
-		if(flag)
-		{
-			return "password updated";
-			
-		}
-		else
-		{
-			return "old password is incorrect";
-			
-		}
-	}
-
-
-
-
-	@Override
-	public List<Customer> sendCustomerCredentials() 
-	{
-		List<Customer> customerList = loginDao.sendCustomerCredentials();
-		return customerList;
-		
-	}
+//	@Override
+//	public String changePassword(String customerEmail, String customerOldPassword, String customerNewPassword) 
+//	{
+//		boolean flag = loginDao.changePassword(customerEmail, customerOldPassword, customerNewPassword);
+//		
+//		if(flag)
+//		{
+//			return "password updated";
+//			
+//		}
+//		else
+//		{
+//			return "old password is incorrect";
+//			
+//		}
+//	}
 
 	@Override
 	public Customer getCustomerByEmail(String customerEmail) 

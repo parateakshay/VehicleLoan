@@ -1,7 +1,10 @@
 package com.vehicleloan.appl.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
@@ -19,18 +22,22 @@ public class CustomerDaoImpl implements CustomerDao
 	@Transactional
 	public boolean registerCustomer(Customer customer) 
 	{
-		Customer checkCustomer = em.find(Customer.class,customer.getCustomerEmail());
-		
-		if(checkCustomer==null)
+		Query query = em.createQuery("select c from Customer c");
+		List<Customer> customerList = query.getResultList();
+		for(Customer c:customerList)
 		{
-			em.persist(customer);
-			return true;
-		}
-		else
-		{
-			return false;
+			if(c.getCustomerEmail().equals(customer.getCustomerEmail()))
+			{
+				
+				return false;
+				
+			}
+			
 			
 		}
+		
+		em.persist(customer);
+		return true;
 	}
 
 }

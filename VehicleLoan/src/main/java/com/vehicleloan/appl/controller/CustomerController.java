@@ -1,32 +1,29 @@
 package com.vehicleloan.appl.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vehicleloan.appl.beans.Customer;
-import com.vehicleloan.appl.service.LoginService;
+import com.vehicleloan.appl.service.CustomerService;
 
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/vehicleloan")
-public class LoginController 
+public class CustomerController 
 {
 	@Autowired
-	private LoginService loginService;
-		
-	@GetMapping(path="/loginCustomerByEmail/{email}",produces="application/json")
-	public Customer getCustomerByEmail(@PathVariable(value="email") String customerEmail)
+	private CustomerService customerService;
+	
+	@PostMapping(path="/registerCustomer")
+	public void registerCustomer(@RequestBody Customer customer)
 	{
-		return loginService.getCustomerByEmail(customerEmail);
+		String msg = customerService.registerCustomer(customer);
+		System.out.println(msg);
 	}
 	
-	
+
 }

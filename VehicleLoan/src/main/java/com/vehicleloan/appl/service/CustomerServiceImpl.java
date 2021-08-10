@@ -23,7 +23,6 @@ public class CustomerServiceImpl implements CustomerService
 		this.customerDao = customerDao;
 	}
 
-
 	@Override
 	public String registerCustomer(Customer customer) 
 	{
