@@ -77,4 +77,13 @@ public class LoginServiceImpl implements LoginService
 		return customerList;
 		
 	}
+
+	@Override
+	public Customer getCustomerByEmail(String customerEmail) 
+	{
+		System.out.println(customerEmail);
+		Customer customer = loginDao.getCustomerByEmail(customerEmail);	
+		System.out.println(customer);
+		return customer;
+	}
 }

@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,9 +28,15 @@ public class LoginController
 		return loginService.sendCustomerCredentials();
 	}
 	
-	@PostMapping("/loginTrial")
-	public void loginCustomer(@RequestBody String customerEmail,String customerPassword)
+//	@PostMapping("/loginTrial")
+//	public void loginCustomer(@RequestBody String customerEmail,String customerPassword)
+//	{
+//		loginService.loginCustomer(customerEmail, customerPassword);
+//	}
+	
+	@GetMapping(path="/loginCustomerByEmail/{email}",produces="application/json")
+	public Customer getCustomerByEmail(@PathVariable(value="email") String customerEmail)
 	{
-		loginService.loginCustomer(customerEmail, customerPassword);
+		return loginService.getCustomerByEmail(customerEmail);
 	}
 }

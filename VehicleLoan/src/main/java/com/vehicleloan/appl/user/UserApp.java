@@ -72,6 +72,11 @@ public class UserApp
 					
 				}
 				break;
+			case 5:
+				System.out.println("enter email");
+				Customer c = Loginservice.getCustomerByEmail(sc.next());
+				System.out.println(c);
+				break;
 			default:
 				System.out.println("Enter correct choice");
 				break;

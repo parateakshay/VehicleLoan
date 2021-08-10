@@ -54,9 +54,15 @@ public class LoginDaoImpl implements LoginDao
 
 	public List<Customer> sendCustomerCredentials() 
 	{
-		Query query = em.createQuery("select c.customerEmail,c.customerPassword from Customer c");
+		Query query = em.createQuery("select c from Customer c");
 		List<Customer> customerList = query.getResultList();
 		return customerList;
+	}
+	@Override
+	public Customer getCustomerByEmail(String customerEmail) 
+	{
+		Customer customer = em.find(Customer.class,customerEmail);
+		return customer;
 	}	
 	}
 
