@@ -1,6 +1,7 @@
 package com.vehicleloan.appl.user;
 
 
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -26,12 +27,11 @@ public class UserApp
 		Scanner sc = new Scanner(System.in);
 		while(true)
 		{
-			System.out.println("Enter your choice:\n1)Register customer\n2)Login customer\n3)Change Password\n");
+			System.out.println("Enter your choice:\n1)Register customer\n2)Login customer\n3)Change Password\n4)show customer\n");
 			int choice = sc.nextInt();
 			switch(choice)
 			{
 			case 1:
-				
 				System.out.println("Enter name");
 				cp.setCustomerName(sc.next());
 				System.out.println("Enter email");
@@ -39,7 +39,7 @@ public class UserApp
 				System.out.println("Enter password");
 				cp.setCustomerPassword(sc.next());
 				System.out.println("Enter phone number");
-				cp.setCustomerPhone(sc.next());
+				cp.setCustomerPhone(sc.nextLong());
 				System.out.println("Enter DOB");
 				cp.setDOB(sc.next());
 				System.out.println("Enter address");
@@ -63,6 +63,15 @@ public class UserApp
 				System.out.println("Enter new password");
 				msg = Loginservice.changePassword(email, password, sc.next());
 				break;
+			case 4:
+				System.out.println("showing customer");
+				List<Customer> customerList = Loginservice.sendCustomerCredentials();
+				for(Customer c:customerList)
+				{
+					System.out.println(c);
+					
+				}
+				break;
 			default:
 				System.out.println("Enter correct choice");
 				break;
@@ -71,9 +80,6 @@ public class UserApp
 		}
 		
 		
-
-		
-
 	}
 
 }

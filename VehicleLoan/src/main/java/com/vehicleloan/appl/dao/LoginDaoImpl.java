@@ -1,7 +1,10 @@
 package com.vehicleloan.appl.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
@@ -56,6 +59,14 @@ public class LoginDaoImpl implements LoginDao
 		}
 		
 		
+	}
+
+	
+	public List<Customer> sendCustomerCredentials() 
+	{
+		Query query = em.createQuery("select c from Customer c");
+		List<Customer> customerList = query.getResultList();
+		return customerList;
 	}	
 	}
 

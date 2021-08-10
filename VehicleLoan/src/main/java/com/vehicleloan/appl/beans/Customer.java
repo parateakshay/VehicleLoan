@@ -25,7 +25,7 @@ public class Customer
 	@Column(name = "CUSTOMER_PASSWORD")
 	private String customerPassword;
 	@Column(name = "CUSTOMER_PHNUMBER")
-	private String customerPhone;
+	private long customerPhone;
 	@Column(name = "CUSTOMER_DOB")
 	private String DOB;
 	@Column(name = "CUSTOMER_ADDRESS")
@@ -54,13 +54,14 @@ public class Customer
 	public void setCustomerPassword(String customerPassword) {
 		this.customerPassword = customerPassword;
 	}
-	public String getCustomerPhone() {
+	
+	
+	public long getCustomerPhone() {
 		return customerPhone;
 	}
-	public void setCustomerPhone(String customerPhone) {
+	public void setCustomerPhone(long customerPhone) {
 		this.customerPhone = customerPhone;
 	}
-	
 	public String getDOB() {
 		return DOB;
 	}

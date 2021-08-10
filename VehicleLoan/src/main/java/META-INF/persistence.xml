@@ -14,8 +14,8 @@
 	
 	<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521/XE" />
 	
-	<property name="javax.persistence.jdbc.user" value="VEHICLELOAN" />
-	<property name="javax.persistence.jdbc.password" value="Newuser123" />
+	<property name="javax.persistence.jdbc.user" value="AKSHAYPARATE" />
+	<property name="javax.persistence.jdbc.password" value="akshay.parate" />
 	<property name="javax.persistence.jdbc.driver" 	value="oracle.jdbc.OracleDriver" />
 	<property name="hibernate.show_sql" value="true" />
 	<property name="hibernate.hbm2ddl.auto" value="update" />

@@ -1,5 +1,7 @@
 package com.vehicleloan.appl.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,9 +49,6 @@ public class LoginServiceImpl implements LoginService
 
 
 
-	
-
-
 
 	@Override
 	public String changePassword(String customerEmail, String customerOldPassword, String customerNewPassword) 
@@ -66,5 +65,16 @@ public class LoginServiceImpl implements LoginService
 			return "old password is incorrect";
 			
 		}
+	}
+
+
+
+
+	@Override
+	public List<Customer> sendCustomerCredentials() 
+	{
+		List<Customer> customerList = loginDao.sendCustomerCredentials();
+		return customerList;
+		
 	}
 }
