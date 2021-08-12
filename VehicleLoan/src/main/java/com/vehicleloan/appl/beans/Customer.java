@@ -85,6 +85,21 @@ public class Customer
 				+ customerEmail + ", customerPassword=" + customerPassword + ", customerPhone=" + customerPhone
 				+ ", DOB=" + DOB + ", address=" + address + "]";
 	}
+	public Customer(int customerId, String customerName, String customerEmail, String customerPassword,
+			long customerPhone, String dOB, String address) {
+		super();
+		this.customerId = customerId;
+		this.customerName = customerName;
+		this.customerEmail = customerEmail;
+		this.customerPassword = customerPassword;
+		this.customerPhone = customerPhone;
+		DOB = dOB;
+		this.address = address;
+	}
+	public Customer() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 	

@@ -8,8 +8,10 @@ import java.util.Scanner;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.vehicleloan.appl.beans.CheckEligibility;
 import com.vehicleloan.appl.beans.Customer;
 import com.vehicleloan.appl.beans.Vehicle;
+import com.vehicleloan.appl.service.CheckEligibilitySerivce;
 import com.vehicleloan.appl.service.CustomerService;
 import com.vehicleloan.appl.service.LoginService;
 import com.vehicleloan.appl.service.VehicleService;
@@ -22,12 +24,17 @@ public class UserApp
 		LoginService Loginservice = ctx.getBean("Login_Service",LoginService.class);
 		CustomerService customerService = ctx.getBean("Customer_Service",CustomerService.class);
 		VehicleService vehicleService = ctx.getBean("VehicleService",VehicleService.class);
+		CheckEligibilitySerivce checkEligibilitySerivce = ctx.getBean("checkEligibilityService",CheckEligibilitySerivce.class);
 		
 		Customer cp = new Customer();
 		String msg ="";
 		String email = "";
 		String password = "";
 		Scanner sc = new Scanner(System.in);
+		
+		
+		
+		
 		while(true)
 		{
 			System.out.println("Enter your choice:\n1)Register customer\n2)Login customer\n3)Change Password\n4)show customer\n");
@@ -108,6 +115,20 @@ public class UserApp
 				vehicle.setVehiclePrice(1200000);
 				vehicleService.addVehicle(vehicle);
 				break;
+			case 7:
+//				Customer c1 = new Customer();
+//				CheckEligibility check = new CheckEligibility(c1,"salaried",500000,"no","","","","");
+//				Customer c1 = new Customer();
+				System.out.println("Enter customer id");
+				int tempCustomerId = sc.nextInt();
+				CheckEligibility check = new CheckEligibility();
+				System.out.println("Enter type of employment");
+				check.setCustomerEmployment("salaried");
+				System.out.println("Existing emi yes/no");
+				check.setExistingEmi("no");
+				System.out.println("yearly salary");
+				check.setAnnualSalary(0);
+//				System.out.println(checkEligibilitySerivce.addCustomerDetails(check,tempCustomerId));
 			default:
 				System.out.println("Enter correct choice");
 				break;
