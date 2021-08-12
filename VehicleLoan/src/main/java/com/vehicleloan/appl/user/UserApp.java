@@ -9,8 +9,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.vehicleloan.appl.beans.Customer;
+import com.vehicleloan.appl.beans.Vehicle;
 import com.vehicleloan.appl.service.CustomerService;
 import com.vehicleloan.appl.service.LoginService;
+import com.vehicleloan.appl.service.VehicleService;
 
 public class UserApp 
 {
@@ -19,6 +21,7 @@ public class UserApp
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("Spring-Config.xml");
 		LoginService Loginservice = ctx.getBean("Login_Service",LoginService.class);
 		CustomerService customerService = ctx.getBean("Customer_Service",CustomerService.class);
+		VehicleService vehicleService = ctx.getBean("VehicleService",VehicleService.class);
 		
 		Customer cp = new Customer();
 		String msg ="";
@@ -78,10 +81,38 @@ public class UserApp
 				Customer c = Loginservice.getCustomerByEmail(sc.next());
 				System.out.println(c);
 				break;
+			case 6:
+//				Vehicle vehicle = new Vehicle();
+//				System.out.println("Enter customer id");
+//				vehicle.setCustomerId(sc.nextInt());
+//				System.out.println("Enter vehicle maker");
+//				vehicle.setVehicleMaker(sc.next());
+//				System.out.println("Enter vehicle model");
+//				vehicle.setVehicleModel(sc.next());
+//				System.out.println("Enter ex show room price");
+//				vehicle.setVehicleExShowroomPrice(sc.nextInt());
+//				System.out.println("Enter on road price");
+//				vehicle.setVehiclePrice(sc.nextInt());
+//				vehicleService.addVehicle(vehicle);
+				
+				Vehicle vehicle = new Vehicle();
+				System.out.println("Enter customer id");
+				vehicle.setCustomerId(1000);
+				System.out.println("Enter vehicle maker");
+				vehicle.setVehicleMaker("honda");
+				System.out.println("Enter vehicle model");
+				vehicle.setVehicleModel("city");
+				System.out.println("Enter ex show room price");
+				vehicle.setVehicleExShowroomPrice(1000000);
+				System.out.println("Enter on road price");
+				vehicle.setVehiclePrice(1200000);
+				vehicleService.addVehicle(vehicle);
+				break;
 			default:
 				System.out.println("Enter correct choice");
 				break;
 			}
+			
 			
 		}
 		

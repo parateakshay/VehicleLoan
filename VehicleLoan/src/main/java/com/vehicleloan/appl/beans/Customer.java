@@ -1,6 +1,7 @@
 package com.vehicleloan.appl.beans;
 
 import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,6 +32,9 @@ public class Customer
 	private String DOB;
 	@Column(name = "CUSTOMER_ADDRESS")
 	private String address;
+	
+//	@OneToOne(targetEntity = Vehicle.class)
+//	private Vehicle vehicle;
 	public int getCustomerId() {
 		return customerId;
 	}

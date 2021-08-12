@@ -6,24 +6,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.vehicleloan.appl.beans.Customer;
-import com.vehicleloan.appl.service.CustomerService;
+import com.vehicleloan.appl.beans.Vehicle;
+import com.vehicleloan.appl.service.VehicleService;
 
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/vehicleloan")
-public class CustomerController 
+public class VehicleController 
 {
-	@Autowired
-	private CustomerService customerService;
+	@Autowired()
+	private VehicleService vehicleService;
 	
-	@PostMapping(path="/registerCustomer")
-	public void registerCustomer(@RequestBody Customer customer)
+	@PostMapping(path="/addVehicle",produces="application/json")
+	public void addVehicle(@RequestBody Vehicle vehicle)
 	{
-		System.out.println("Entered the controller");
-		String msg = customerService.registerCustomer(customer);
+		String msg = vehicleService.addVehicle(vehicle);
 		System.out.println(msg);
 	}
-	
+
 }
