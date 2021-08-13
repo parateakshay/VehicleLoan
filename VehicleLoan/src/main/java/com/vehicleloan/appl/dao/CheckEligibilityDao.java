@@ -5,5 +5,6 @@ import com.vehicleloan.appl.beans.CheckEligibility;
 public interface CheckEligibilityDao 
 {
 	public boolean addCustomerDetails(CheckEligibility checkEligibility);
+	public CheckEligibility getEligibilityDetailsByCustomerId(int customerId);
 
 }

@@ -129,6 +129,10 @@ public class UserApp
 				System.out.println("yearly salary");
 				check.setAnnualSalary(0);
 //				System.out.println(checkEligibilitySerivce.addCustomerDetails(check,tempCustomerId));
+				break;
+			case 8:
+				CheckEligibility check1 = checkEligibilitySerivce.getEligibilityDetailsByCustomerId(1003);
+				System.out.println(check1);
 			default:
 				System.out.println("Enter correct choice");
 				break;

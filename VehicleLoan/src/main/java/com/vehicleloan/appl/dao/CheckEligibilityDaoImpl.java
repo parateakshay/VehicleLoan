@@ -3,6 +3,8 @@ package com.vehicleloan.appl.dao;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
@@ -30,6 +32,14 @@ public class CheckEligibilityDaoImpl implements CheckEligibilityDao
 		em.persist(checkEligibility);
 		
 		return true;
+	}
+
+	
+	public CheckEligibility getEligibilityDetailsByCustomerId(int customerId) 
+	{
+		TypedQuery<CheckEligibility> query = em.createQuery("SELECT c FROM CheckEligibility c INNER JOIN c.customer a WHERE a.customerId="+customerId,CheckEligibility.class);
+		CheckEligibility check = query.getSingleResult();
+		return check;
 	}
 
 	

@@ -29,4 +29,16 @@ public class CheckEligibilitySerivceImpl implements CheckEligibilitySerivce
 		return "done";
 	}
 
+
+
+
+
+	
+	public CheckEligibility getEligibilityDetailsByCustomerId(int customerId) 
+	{
+		return checkEligibilityDao.getEligibilityDetailsByCustomerId(customerId);
+		
+		
+	}
+
 }

@@ -5,5 +5,6 @@ import com.vehicleloan.appl.beans.Vehicle;
 public interface VehicleService 
 {
 	public String addVehicle(Vehicle vehicle);
+	public Vehicle getVehicleDetailsByCustomerId(int customerId);
 
 }

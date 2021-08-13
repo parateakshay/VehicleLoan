@@ -42,4 +42,14 @@ public class VehicleServiceImpl implements VehicleService
 		
 	}
 
+
+
+	@Override
+	public Vehicle getVehicleDetailsByCustomerId(int customerId) 
+	{
+		Vehicle vehicle = vehicleDao.getVehicleDetailsByCustomerId(customerId);
+		
+		return vehicle;
+	}
+
 }
