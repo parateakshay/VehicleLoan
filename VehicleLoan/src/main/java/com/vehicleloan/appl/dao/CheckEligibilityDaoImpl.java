@@ -21,14 +21,6 @@ public class CheckEligibilityDaoImpl implements CheckEligibilityDao
 	@Transactional
 	public boolean addCustomerDetails(CheckEligibility checkEligibility) 
 	{
-//		Customer cust = em.find(Customer.class,tempCustomerId);
-		
-//		if(cust!=null)
-//		{
-//			checkEligibility.setCustomer(cust);
-//			em.persist(checkEligibility);
-//			return true;
-//		}
 		em.persist(checkEligibility);
 		
 		return true;
