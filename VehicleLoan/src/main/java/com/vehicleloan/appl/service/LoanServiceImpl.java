@@ -26,7 +26,7 @@ public class LoanServiceImpl implements LoanService
 
 
 	public String addLoan(Loan loan) {
-		
+		System.out.println("enter service layer");
 		boolean flag = loanDao.addLoan(loan);
 		if(flag)
 		{
@@ -39,6 +39,14 @@ public class LoanServiceImpl implements LoanService
 			
 		}
 		
+	}
+
+
+
+	public Loan getLoanByCustomerId(int customerId) 
+	{
+		
+		return loanDao.getLoanByCustomerId(customerId);
 	}
 	
 

@@ -5,5 +5,5 @@ import com.vehicleloan.appl.beans.Loan;
 public interface LoanDao 
 {
 	public boolean addLoan(Loan loan);
-
+	public Loan getLoanByCustomerId(int customerId);
 }

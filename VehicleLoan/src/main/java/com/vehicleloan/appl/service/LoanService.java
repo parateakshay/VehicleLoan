@@ -5,5 +5,6 @@ import com.vehicleloan.appl.beans.Loan;
 public interface LoanService 
 {
 	public String addLoan(Loan loan);
+	public Loan getLoanByCustomerId(int customerId);
 
 }

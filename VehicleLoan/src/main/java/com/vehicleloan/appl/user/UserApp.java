@@ -4,15 +4,19 @@ package com.vehicleloan.appl.user;
 import java.util.List;
 import java.util.Scanner;
 
-
+import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.vehicleloan.appl.beans.Bank;
 import com.vehicleloan.appl.beans.CheckEligibility;
 import com.vehicleloan.appl.beans.Customer;
+import com.vehicleloan.appl.beans.Loan;
 import com.vehicleloan.appl.beans.Vehicle;
+import com.vehicleloan.appl.service.BankService;
 import com.vehicleloan.appl.service.CheckEligibilitySerivce;
 import com.vehicleloan.appl.service.CustomerService;
+import com.vehicleloan.appl.service.LoanService;
 import com.vehicleloan.appl.service.LoginService;
 import com.vehicleloan.appl.service.VehicleService;
 
@@ -25,8 +29,10 @@ public class UserApp
 		CustomerService customerService = ctx.getBean("Customer_Service",CustomerService.class);
 		VehicleService vehicleService = ctx.getBean("VehicleService",VehicleService.class);
 		CheckEligibilitySerivce checkEligibilitySerivce = ctx.getBean("checkEligibilityService",CheckEligibilitySerivce.class);
-		
+		LoanService loanService = ctx.getBean("loanService",LoanService.class);
+		BankService bankService = ctx.getBean("bankService",BankService.class);
 		Customer cp = new Customer();
+		
 		String msg ="";
 		String email = "";
 		String password = "";
@@ -133,6 +139,35 @@ public class UserApp
 			case 8:
 				CheckEligibility check1 = checkEligibilitySerivce.getEligibilityDetailsByCustomerId(1003);
 				System.out.println(check1);
+				break;
+			case 9:
+				Loan loan = new Loan();
+				loan.setLoanAmount(1000000);
+				loan.setLoanApplicationDate("06/05/2021");
+				loan.setLoanTenure(36);
+				loan.setLoanStatus("waiting");
+				Customer cp2 = new Customer();
+				cp2.setCustomerId(1002);
+				cp2.setCustomerName("varun");
+				cp2.setCustomerEmail("varun@gmail.com");
+				cp2.setCustomerPassword("varun");
+				cp2.setCustomerPhone(4644654);
+				cp2.setDOB("04/07/1999");
+				cp2.setAddress("chennai");
+				loan.setCustomer(cp2);
+				Bank b  = bankService.getBankDetails();
+				System.out.println(b);
+				loan.setBank(b);
+				Vehicle vehicle1 = vehicleService.getVehicleDetailsByCustomerId(1002);
+				System.out.println(vehicle1);
+				loan.setVehicle(vehicle1);
+				
+				String msg2 =  loanService.addLoan(loan);
+//				System.out.println(msg2);
+				break;
+			case 10:
+			Loan loan1 =loanService.getLoanByCustomerId(1000);
+			System.out.println(loan1);
 			default:
 				System.out.println("Enter correct choice");
 				break;
