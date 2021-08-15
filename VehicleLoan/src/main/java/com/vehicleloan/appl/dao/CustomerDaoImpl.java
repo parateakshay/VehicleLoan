@@ -40,4 +40,14 @@ public class CustomerDaoImpl implements CustomerDao
 		return true;
 	}
 
+
+
+	@Transactional
+	public List<Customer> getAllCustomer() 
+	{
+		Query query = em.createQuery("select c from Customer c");
+		List<Customer> customerList = query.getResultList();
+		return customerList;
+	}
+
 }

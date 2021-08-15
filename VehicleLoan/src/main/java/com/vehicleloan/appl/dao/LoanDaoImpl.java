@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
@@ -32,6 +33,43 @@ public class LoanDaoImpl implements LoanDao
 		Loan loan = query.getSingleResult();
 		System.out.println(loan);
 		return loan;
+	}
+	@Transactional
+	public List<Loan> getPendingLoans() 
+	{
+		String sql = "SELECT l FROM Loan l WHERE l.loanStatus='Waiting'";
+
+		Query qry = em.createQuery(sql);
+
+		List<Loan> loanList = qry.getResultList();
+		return loanList;
+		
+		
+	}
+	@Transactional
+	public List<Loan> getRejectedLoans() {
+		String sql = "SELECT l FROM Loan l WHERE l.loanStatus='REJECTED'";
+
+		Query qry = em.createQuery(sql);
+
+		List<Loan> loanList = qry.getResultList();
+		return loanList;
+	}
+	@Transactional
+	public void rejectLoan(Loan loan) 
+	{
+		Loan l = em.find(Loan.class, loan.getLoanId());
+		l.setLoanStatus("REJECTED");
+		em.merge(l);
+		
+	}
+	@Transactional
+	public void acceptLoan(Loan loan) 
+	{
+		Loan l = em.find(Loan.class, loan.getLoanId());
+		l.setLoanStatus("ACCEPTED");
+		em.merge(l);
+		
 	}
 
 }

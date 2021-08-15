@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+import com.vehicleloan.appl.beans.Admin;
 import com.vehicleloan.appl.beans.Customer;
 @Repository("loginDao")
 public class LoginDaoImpl implements LoginDao
@@ -50,6 +51,28 @@ public class LoginDaoImpl implements LoginDao
 			{
 				
 				return c;
+				
+			}
+			
+			
+		}
+		
+		return null;
+	}
+
+
+	@Override
+	public Admin getAdminByEmail(String adminEmail) {
+		
+		Query query = em.createQuery("select a from Admin a");
+		List<Admin> adminList = query.getResultList();
+		System.out.println(adminList);
+		for(Admin a:adminList)
+		{
+			if(a.getAdminEmail().equals(adminEmail))
+			{
+				
+				return a;
 				
 			}
 			

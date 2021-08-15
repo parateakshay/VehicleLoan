@@ -1,5 +1,7 @@
 package com.vehicleloan.appl.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,6 +37,36 @@ public class LoanController
 	{
 		System.out.println(loanService.getLoanByCustomerId(customerId));
 		return loanService.getLoanByCustomerId(customerId);
+	}
+	
+	@GetMapping(path="/getRejectedLoans")
+	public List<Loan> getRejectedLoans()
+	{
+		
+		System.out.println("Entered the controller");
+		List<Loan> rejectList = loanService.getRejectedLoans();
+		return rejectList;
+	}
+	
+	@GetMapping(path="/getPendingLoans")
+	public List<Loan> getPendingLoans()
+	{
+		
+		System.out.println("Entered the controller");
+		List<Loan> pendingList = loanService.getPendingLoans();
+		return pendingList;
+	}
+	
+	@PostMapping("/rejectLoan")
+	public void rejectLoan(@RequestBody Loan loan) {
+		System.out.println("We reached here!");
+		 loanService.rejectLoan(loan);
+	}
+	
+	@PostMapping("/acceptLoan")
+	public void acceptLoan(@RequestBody Loan loan) {
+		System.out.println("We reached here!");
+		 loanService.acceptLoan(loan);
 	}
 
 }
