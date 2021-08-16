@@ -23,6 +23,7 @@ public class LoginController
 {
 	@Autowired
 	private LoginService loginService;
+	@Autowired
 	private AdminService adminService;
 		
 	@GetMapping(path="/loginCustomerByEmail/{email}",produces="application/json")
@@ -35,7 +36,9 @@ public class LoginController
 	public Admin getAdminByEmail(@PathVariable(value="email") String adminEmail)
 	{
 		System.out.println("inside controller");
-		return adminService.adminLogin(adminEmail);
+		Admin admin = adminService.adminLogin(adminEmail);
+		System.out.println(admin);
+		return admin;
 	}
 	
 	

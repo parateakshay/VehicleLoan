@@ -14,7 +14,7 @@ import com.vehicleloan.appl.beans.Customer;
 import com.vehicleloan.appl.service.CustomerService;
 
 @CrossOrigin(origins = "*")
-@RestController
+@RestController //creating restfull web services
 @RequestMapping("/api/vehicleloan")
 public class CustomerController 
 {

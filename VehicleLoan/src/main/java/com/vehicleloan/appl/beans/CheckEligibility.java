@@ -22,7 +22,7 @@ public class CheckEligibility
 	private int docId;
 	
 	
-	@OneToOne(cascade = CascadeType.MERGE)
+	@OneToOne(cascade = CascadeType.MERGE) 
 	@JoinColumn(name = "CUSTOMER_ID")
 	private Customer customer;
 	@Column(name = "CUSTOMER_EMPLOYMENT")

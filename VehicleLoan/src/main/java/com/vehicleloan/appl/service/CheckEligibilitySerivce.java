@@ -6,4 +6,5 @@ public interface CheckEligibilitySerivce
 {
 	public String addCustomerDetails(CheckEligibility checkEligibility);
 	public CheckEligibility getEligibilityDetailsByCustomerId(int customerId);
+	public String addForms(String aadharcard,String photo, String pancard, String salaryslip,int customerId);
 }

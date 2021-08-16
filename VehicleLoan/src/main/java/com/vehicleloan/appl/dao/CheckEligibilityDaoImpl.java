@@ -26,7 +26,7 @@ public class CheckEligibilityDaoImpl implements CheckEligibilityDao
 		return true;
 	}
 
-	
+	@Transactional
 	public CheckEligibility getEligibilityDetailsByCustomerId(int customerId) 
 	{
 		TypedQuery<CheckEligibility> query = em.createQuery("SELECT c FROM CheckEligibility c INNER JOIN c.customer a WHERE a.customerId="+customerId,CheckEligibility.class);
@@ -34,6 +34,21 @@ public class CheckEligibilityDaoImpl implements CheckEligibilityDao
 		return check;
 	}
 
+
+	@Transactional
+	public void addForms(String aadharcard, String photo, String pancard, String salaryslip,int customerId) 
+	{
+		TypedQuery<CheckEligibility> query = em.createQuery("SELECT c FROM CheckEligibility c INNER JOIN c.customer a WHERE a.customerId="+customerId,CheckEligibility.class);
+		CheckEligibility check = query.getSingleResult();
+		check.setAadharCard(aadharcard);
+		check.setProPic(photo);
+		check.setPancard(pancard);
+		check.setPaySlip(salaryslip);
+		em.merge(check);
+		
+	}
+
+	
 	
 
 }

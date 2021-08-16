@@ -8,11 +8,13 @@ import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.vehicleloan.appl.beans.Admin;
 import com.vehicleloan.appl.beans.Bank;
 import com.vehicleloan.appl.beans.CheckEligibility;
 import com.vehicleloan.appl.beans.Customer;
 import com.vehicleloan.appl.beans.Loan;
 import com.vehicleloan.appl.beans.Vehicle;
+import com.vehicleloan.appl.service.AdminService;
 import com.vehicleloan.appl.service.BankService;
 import com.vehicleloan.appl.service.CheckEligibilitySerivce;
 import com.vehicleloan.appl.service.CustomerService;
@@ -31,12 +33,14 @@ public class UserApp
 		CheckEligibilitySerivce checkEligibilitySerivce = ctx.getBean("checkEligibilityService",CheckEligibilitySerivce.class);
 		LoanService loanService = ctx.getBean("loanService",LoanService.class);
 		BankService bankService = ctx.getBean("bankService",BankService.class);
+		AdminService adminService = ctx.getBean("Admin_Service",AdminService.class);
 		Customer cp = new Customer();
 		
 		String msg ="";
 		String email = "";
 		String password = "";
 		Scanner sc = new Scanner(System.in);
+		
 		
 		
 		
@@ -168,6 +172,17 @@ public class UserApp
 			case 10:
 			Loan loan1 =loanService.getLoanByCustomerId(1000);
 			System.out.println(loan1);
+			break;
+			case 11:
+				
+				System.out.println("enter email");
+				String adminId = sc.next();
+				System.out.println("enter password");
+				String adminPass = sc.next();
+				adminService.adminLogin(adminId);
+				break;
+			case 12:
+				checkEligibilitySerivce.addForms("ad", "ph", "pc", "ss",1028);
 			default:
 				System.out.println("Enter correct choice");
 				break;

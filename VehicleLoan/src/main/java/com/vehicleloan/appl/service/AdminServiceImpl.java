@@ -25,11 +25,8 @@ public class AdminServiceImpl implements AdminService
 	}
 
 
-
-	
 	public Admin adminLogin(String adminEmail) {
 		System.out.println("inside service");
-		
 		return loginDao.getAdminByEmail(adminEmail);
 	}
 

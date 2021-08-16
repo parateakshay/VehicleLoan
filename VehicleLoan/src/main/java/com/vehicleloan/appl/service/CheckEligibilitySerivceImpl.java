@@ -40,5 +40,12 @@ public class CheckEligibilitySerivceImpl implements CheckEligibilitySerivce
 		
 		
 	}
+	
+	public String addForms(String aadharcard,String photo, String pancard, String salaryslip,int customerId)
+	{
+		checkEligibilityDao.addForms( aadharcard, photo,  pancard,  salaryslip,customerId);
+		
+		return "added";
+	}
 
 }
